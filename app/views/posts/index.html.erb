@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+  <h3> <%= post.title %> </h3>
+  <h4> <%= post.content %> </h4>
+  <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
+<% end %>
