@@ -1,5 +1,10 @@
 <% @posts.each do |post| %>
   <h3> <%= post.title %> </h3>
+  <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
   <h4> <%= post.content %> </h4>
   <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
+  <% if current_user %>
+  <%= link_to "delete", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to "edit", edit_post_path(post) %>
+  <%end%>
 <% end %>

@@ -7,6 +7,8 @@ gem 'rails', '4.1.0.beta1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+gem 'aws-sdk'
+
 gem 'twitter-bootstrap-rails', git: 'git@github.com:seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
 
 # Use SCSS for stylesheets
@@ -29,6 +31,8 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
+gem 'devise'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -41,6 +45,7 @@ gem 'spring',        group: :development
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl_rails'
 
 end
 
