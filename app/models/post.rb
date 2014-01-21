@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
   has_attached_file :image, 
-  :styles => { thumb: "300x300>" },
+  :styles => { thumb: " ", small: "150x150>" },
+  :convert_options => { 
+  :thumb => "-gravity Center -crop 500x500+0+0 +repage -resize 300x300^" },
+  :default_style => :thumb,
   storage: :s3,
   s3_credentials: {
     access_key_id: 'AKIAJIT2TOCWJOPENM7Q',
