@@ -1,10 +1,15 @@
 require 'spec_helper'
 
 describe "deleting the post" do
-  
+
+	let(:tom) { create(:user) }
+
   before do
-    create(:post)
+    create(:post, user: tom)
+    login_as tom
   end
+
+
 
   it 'should delete the post from the database' do
     visit '/posts'

@@ -8,4 +8,6 @@ class Post < ActiveRecord::Base
   },
   bucket: 'christagram_development'
 
+  belongs_to :user
+
 end

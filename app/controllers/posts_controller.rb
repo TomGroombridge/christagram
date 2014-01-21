@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to '/posts'
     else
-      redirect_to '/posts/new'
+      render 'new'
     end
   end
 

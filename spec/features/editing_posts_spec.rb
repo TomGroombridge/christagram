@@ -2,8 +2,11 @@ require 'spec_helper'
 
 describe 'editing' do
 
+  let(:tom) { create(:user) }
+
   before do
-    create(:post)
+    create(:post, user: tom)
+    login_as tom
   end
 
   it 'should change the post' do
