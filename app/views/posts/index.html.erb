@@ -1,10 +1,21 @@
+<% if current_user %>
+ <button><%= link_to "new", new_post_path %></button>
+<% end %>
 <% @posts.each do |post| %>
-  <h3> <%= post.title %> </h3>
-  <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
-  <h4> <%= post.content %> </h4>
-  <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
-  <% if current_user %>
-  <%= link_to "delete", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to "edit", edit_post_path(post) %>
+<div class="row">
+  <div class="col-sm-6 col-md-4"  style="margin-top: 50px">
+    <div class="thumbnail">
+      <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
+        <div class="caption">
+          <h3> <%= post.title %> </h3>
+          <h4> <%= post.content %> </h4>
+          <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
+            <% if current_user %>
+            <button><%= link_to "delete", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
+           <button><%= link_to "edit", edit_post_path(post) %></button>
+           </div>
+    </div>
+  </div>
   <%end%>
 <% end %>
+</div>
