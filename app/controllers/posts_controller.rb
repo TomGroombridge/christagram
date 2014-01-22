@@ -38,5 +38,8 @@ class PostsController < ApplicationController
     redirect_to '/posts'
   end
 
+  def show
+  end
+
 
 end
