@@ -12,13 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-<<<<<<< HEAD
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-=======
 //= require jquery.ui.all  
 //= require inputosaurus
->>>>>>> 623e3fe9833dc18cb4561f828ff7504dcc3f0af8
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
