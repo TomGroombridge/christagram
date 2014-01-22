@@ -1,26 +1,24 @@
-<% if user_signed_in? %>
-  <div class="container">
-    <div class="row">
-      <% @posts.each do |post| %>
-        <div class="col-md-3">
-        <div class="thumbnail" style= "min-height: 460px">
-          <div class="thumbnail" id="image" style= "height: 225px">
-          <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
-          </div>
-          <div class="caption" style= "height: 225px">
-          <h3> <%= post.title %> </h3>
-          <h4> <%= post.content %> </h4>
-                    <p>
-          <% post.tags.each do |tag| %>
-          <%= link_to tag, tag_posts_path(tag) %>
-          <% end %>
-          <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
-           <button><%= link_to "delete", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
-           <button><%= link_to "edit", edit_post_path(post) %></button>
-          </div>
-          </div>   
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-3">
+      <div class="thumbnail" style= "min-height: 460px">
+        <div class="thumbnail" id="image" style= "height: 225px">
+        <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
         </div>
-      <% end %>
-    </div>
+        <div class="caption" style= "height: 225px">
+        <h3> <%= post.title %> </h3>
+        <h4> <%= post.content %> </h4>
+                  <p>
+        <% post.tags.each do |tag| %>
+        <%= link_to tag, tag_posts_path(tag) %>
+        <% end %>
+        <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
+         <button><%= link_to "delete", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
+         <button><%= link_to "edit", edit_post_path(post) %></button>
+        </div>
+        </div>   
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
