@@ -8,7 +8,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
-config.assets.initialize_on_precompile = true
+
 
 
 # Require the gems listed in Gemfile, including any gems
