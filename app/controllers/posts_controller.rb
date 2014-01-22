@@ -14,8 +14,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order('created_at DESC')
-  end
+    @posts = Post.for_tag_or_all(params[:tag_id]).order('created_at DESC')
+   end
 
   def destroy
     @post = Post.find(params[:id])
