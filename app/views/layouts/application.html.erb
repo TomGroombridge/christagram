@@ -40,7 +40,7 @@
   <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <a class="navbar-brand" href="#">Christagram</a>
+        <a class="navbar-brand" <%= link_to('Christagram Home', posts_path) %> </a>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
