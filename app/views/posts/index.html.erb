@@ -8,13 +8,19 @@
         </div>
         <div class="caption" style= "height: 225px">
         <h3> <%= link_to post.title, post_path(post) %> </h3>
-        
-        <h4> <%= post.content %> </h4>
+
+        <p> <%= post.content %> </p>
                   <p>
         <% post.tags.each do |tag| %>
         <%= link_to tag, tag_posts_path(tag) %>
-        <% end %>
-        <h5> Created <%= time_ago_in_words post.created_at %> ago </h5>
+        <% end %></p>
+        <p> Created <%= time_ago_in_words post.created_at %> ago </p>
+        <p>          <% post.comments.each do|comment| %>
+            <%= comment.commenter %> said <%= comment.body %> <br>
+            <%= time_ago_in_words comment.created_at %> ago
+          <%end%>
+        </p>
+
          <button><%= link_to "delete", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
          <button><%= link_to "edit", edit_post_path(post) %></button>
         </div>

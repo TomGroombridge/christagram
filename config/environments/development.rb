@@ -15,6 +15,17 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp   #:file to log into tmp, testing use
+  #only send actual e-mails from production never from dvelopment
+  ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => Rails.application.secrets.sendgrid_user,
+  :password       => Rails.application.secrets.sendgrid_pwd,
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
+}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

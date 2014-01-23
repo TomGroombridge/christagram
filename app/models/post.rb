@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  after_create :send_new_post_email
   has_many :comments
   has_attached_file :image, 
   :styles => { thumb: "300x300^", small: "150x150>" },
@@ -38,8 +39,10 @@ class Post < ActiveRecord::Base
 
   def self.for_tag_or_all(tag_name)
     tag_name ? Tag.find_by(name: tag_name).posts : all
-    
+  end
 
+  def send_new_post_email
+    PostMailer.new_post(self, user).deliver! if user
   end
 
 end
