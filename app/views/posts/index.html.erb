@@ -8,6 +8,7 @@
         </div>
         <div class="caption" style= "height: 225px">
         <h3> <%= link_to post.title, post_path(post) %> </h3>
+        
         <h4> <%= post.content %> </h4>
                   <p>
         <% post.tags.each do |tag| %>
