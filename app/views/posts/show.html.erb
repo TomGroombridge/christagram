@@ -2,13 +2,13 @@
 
 <h1>Buy this print</h1>
 
-<%= form_tag charges_path do %>
+<%= form_tag post_charges_path(@post) do %>
 
 	<p>Buy this print for £10.00</p>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.application.secrets.stripe_pk %>"
-          data-description="Instagram Print"
+          data-description="Print of <%= @post.title %> "
           data-amount="1000"
           data-currency="GBP"></script>
 <% end %>
