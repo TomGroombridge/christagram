@@ -41,9 +41,6 @@ class PostsController < ApplicationController
     redirect_to '/posts'
   end
 
-  def show
-  end
-
   private
 
   def fetch_post

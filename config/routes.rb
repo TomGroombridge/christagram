@@ -4,6 +4,7 @@
   root :to => "posts#index"
 
   resources :posts do
+  resources :charges
 
 end
 
@@ -11,7 +12,6 @@ end
     resources :posts
   end
 
-  resources :charges
 
 
 
