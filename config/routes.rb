@@ -4,6 +4,7 @@
   root :to => "posts#index"
 
   resources :posts do
+    resources :comments
   resources :charges
 
 end
