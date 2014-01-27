@@ -1,21 +1,85 @@
-<%= form_for @post, html: { multipart: true } do |form| %>
+<% if false %> 
 
-  <%= form.label :title %>  
-  <%= form.text_field :title %> 
-  <br>
-  <%= form.label :content %>  
-  <%= form.text_area :content %>   
-  <br>
-  <%= form.label :image %>  
-  <%= form.file_field :image %> 
-  <br>
-  <%= form.label :tag_names, 'Tags' %>  
-  <%= form.text_field :tag_names %>
-  <br>
-  <%= form.submit %>
+  <%= form_for @post, html: { multipart: true } do |form| %>
 
+    <%= form.label :title %>  
+    <%= form.text_field :title %> 
+    <br>
+    <%= form.label :content %>  
+    <%= form.text_area :content %>   
+    <br>
+    <%= form.label :image %>  
+    <%= form.file_field :image %> 
+    <br>
+    <%= form.label :tag_names, 'Tags' %>  
+    <%= form.text_field :tag_names %>
+    <br>
+    <%= form.submit %>
+
+
+  <% end %>
 
 <% end %>
 
+<% if true %>
+
 <% # jquery upload template # %>
 <script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login"> <!-- id="login"> -->
+    
+      <h2>Add you image!</h2>
+      <h3><small></small></h3>
+      <hr class="colorgraph">
+        <%= form_for @post, html: { multipart: true, }, :html => {:class => "form-group"} do |form| %>
+      <div class="form-group">  
+          <%= form.text_field :title, class: 'form-control input-lg', placeholder: 'title' %> 
+      </div>
+      <div class="form-group">
+          <%= form.text_area :content, class: 'form-control input-lg', placeholder: 'content' %>
+      </div>
+      <div class="form-group">
+          <%= form.text_field :tag_names, class: 'form-control input-lg', placeholder: 'tags' %>
+      </div>
+      <div class="form-group">
+          <%= form.file_field :image %>
+      </div>
+        <%= form.submit %>
+      <% end %>
+
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-3 col-md-3"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+        <div class="col-xs-3 col-md-3"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
+        <div class="col-xs-6 col-md-5"><input type="submit" value="Just looking for now" class="btn btn-warning btn-block btn-lg" tabindex="7"></div>
+      </div>
+      
+    </form>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+      </div>
+      <div class="modal-body">
+        <p>We don't really have any at the moment! No cock pictures</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+
+
+
+
+<% end %>
