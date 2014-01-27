@@ -7,6 +7,7 @@
       <div class="thumbnail" style= "min-height: 460px">
         <div class="thumbnail" id="image" style= "height: 225px">
         <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
+
         </div>
         <div class="caption" style= "height: 225px">
         <p> <%= link_to post.title, post_path(post) %> </p>
@@ -23,7 +24,7 @@
         <button><%= link_to "edit", edit_post_path(post) %></button>
         <button><%= link_to "comment", post_path(post) %></button>
         <button><%= link_to "buy print", post_path(post) %></button>
-
+        
         </div>
       <!--    <h3> Buy a print </h3> -->
         </div>   
@@ -67,12 +68,15 @@
         <button><%= link_to "edit", edit_post_path(post) %></button>
         <button><%= link_to "comment", post_path(post) %></button>
         <button><%= link_to "buy print", post_path(post) %></button>
+        
                   <div class="row rating-desc">
                     <div class="col-md-12">
                       <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
                       </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
                       </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
                       <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+                      <h3 class='likes_count'><%= post.points %>
+                      <%= button_to 'Like', post_likes_path(post, up: true) %>
                     </div>
                   </div>
                 </div>
