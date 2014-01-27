@@ -1,7 +1,9 @@
  Rails.application.routes.draw do
 
+  get "welcome/index"
+
   devise_for :users
-  root :to => "posts#index"
+  root :to => "welcome#index"
 
   resources :posts do
     resources :comments

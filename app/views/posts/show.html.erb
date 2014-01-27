@@ -1,3 +1,4 @@
+<div class="col-md-6" id="form">
 <h3> <%= @post.title %> </h3>
 
 <h1>Buy this print</h1>
@@ -12,10 +13,10 @@
           data-amount="1000"
           data-currency="GBP"></script>
 <% end %>
-
+<h3>Comments</h3>
          <% @post.comments.each do|comment| %>
             <%= comment.commenter %> said <%= comment.body %> <br>
-            <%= time_ago_in_words comment.created_at %> ago
+           <p> <%= time_ago_in_words comment.created_at %> ago </p> <br>
           <%end%>
 
 <h2>Add a comment:</h2>
@@ -35,3 +36,5 @@
  
 <%= link_to 'Back', posts_path %>
 | <%= link_to 'Edit', edit_post_path(@post) %>
+
+</div>
