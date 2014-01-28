@@ -22,10 +22,10 @@
                   <hr />
 
                 <!-- this is a all the code for the comment button on the posts page -->
-
-                          <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
+        <% if post.user == current_user %>
+        <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
         <button><%= link_to "edit", edit_post_path(post) %></button>
-
+        <% end %>
         <button class="btn btn-primary " data-toggle="modal" data-target="#myModal"> Comment </button>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -40,7 +40,7 @@
                   <div class="modal-body">
                       <% post.comments.each do|comment| %>
                       <%if comment.user%>
-                        <%= comment.user.email %> said <%= comment.body %> 
+                        <strong><%= comment.user.email%></strong> said <br> <%= comment.body %> 
                         <p> 
                         <%end%>
                         <%= time_ago_in_words comment.created_at %> ago 
