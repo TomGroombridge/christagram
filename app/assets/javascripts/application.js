@@ -17,6 +17,6 @@
 //= require jquery.ui.all  
 //= require inputosaurus
 //= require twitter/bootstrap
-//= $('#post_tag_names')
-//= require turbolinks
+//= require websocket_rails/main
 //= require_tree .
+
