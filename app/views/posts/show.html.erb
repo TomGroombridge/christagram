@@ -1,9 +1,14 @@
-<div class="col-md-6" id="form">
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
 
-  <h3> <%= @post.title %> </h3>
+<div class="container">
 
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login">
+    <div class="thumbnail" id="buyimage" style="height: 500px;">
+        <%= image_tag @post.image.url(:thumb), class: "christagram-upload" %>
+    </div>
 
-  <h1>Buy this print</h1>
+  <h3>Buy a print of "<%= @post.title %>" </h3>
 
   <%= form_tag post_charges_path(@post) do %>
 
@@ -15,6 +20,9 @@
             data-amount="1000"
             data-currency="GBP"></script>
   <% end %>
+</div>
+</div>
+
   <h3>Comments</h3>
            <% @post.comments.each do|comment| %>
               <%= comment.commenter %> said <%= comment.body %> <br>

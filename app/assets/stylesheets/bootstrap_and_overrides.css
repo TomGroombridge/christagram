@@ -10,6 +10,11 @@
 
   .html {
     background-color: #f5f5f5;
+    border: none;
+  }
+
+  #buyimage {
+    background-color: white;
   }
 
 /*  body {
@@ -35,8 +40,6 @@
 
   .img-rounded {
     max-height: 100%;
-/*    margin-left: auto;
-    margin-right: auto;*/
     margin: auto;
   }
 
@@ -63,7 +66,7 @@
   }
 
   #login {background-color: #fafafa;
-    padding: 10px; border-radius: 20px; margin-top: 100px}
+    padding: 10px; border-radius: 20px; margin-top: 20px; margin-bottom: 20px;}
 
   .glyphicon { margin-right:5px;}
 .section-box h2 { margin-top:0px;}
@@ -102,6 +105,10 @@
     width: auto;
     margin-top: auto;
     margin-bottom: auto;
+  }
+
+  .addpost {
+    max-width: 30%;
   }
 
   body{
