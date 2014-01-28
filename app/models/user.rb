@@ -15,11 +15,11 @@ class User < ActiveRecord::Base
 
 
   def self.find_for_facebook_oauth(auth)
-    where(auth.slice(:uid)).first_or_initialize.tap do |user|
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-
       user.save!
     end
   end
