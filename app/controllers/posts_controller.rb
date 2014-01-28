@@ -1,7 +1,5 @@
 class PostsController < ApplicationController
 
-  # before_action :fetch_post, only: [:edit, :update, :destroy, :show]
-  # before_action :authenticate_user!, only: [:new, :update]
   
   def new
     @post = Post.new
@@ -18,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    redirect_to welcome_index_path if !current_user 
     @posts = Post.for_tag_or_all(params[:tag_id]).order('created_at DESC')
    end
 

@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  validates :title, presence: true
+  validates_presence_of :title, :message => "should happen once per year"
   after_create :send_new_post_email
   has_many :comments
   has_many :likes
