@@ -7,10 +7,10 @@ describe 'creating a post' do
 
     it 'should display the title of the list of posts' do
       visit 'posts/new'
-      fill_in 'Title', with: 'new post'
-      fill_in 'Content', with: 'my testing post'
-      fill_in 'Tags', with: 'hello, world'
-      click_button 'Create Post'
+      fill_in 'title', with: 'new post'
+      fill_in 'content', with: 'my testing post'
+      fill_in 'tags', with: 'hello, world'
+      click_button 'Post'
 
       expect(current_path).to eq '/posts'
       expect(page).to have_content 'new post'

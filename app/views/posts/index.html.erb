@@ -7,7 +7,7 @@
             <div class="well well-sm">
               <div class="row">
                 <div class="col-xs-6 col-md-6 text-center" style= "height: 225px">
-                  <%= image_tag post.image.url(:thumb), class: "christagram-upload img-rounded img-responsive" %>
+                  <%= link_to image_tag post.image.url(:thumb), class: "christagram-upload img-rounded img-responsive" %>
                 </div>
                 <div class="col-xs-6 col-md-6 section-box">
                   <h2><%= link_to post.title, post_path(post) %></h2>
@@ -20,9 +20,58 @@
                   </p>
         <p> Created <%= time_ago_in_words post.created_at %> ago </p>
                   <hr />
+
+                <!-- this is a all the code for the comment button on the posts page -->
+
                           <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
         <button><%= link_to "edit", edit_post_path(post) %></button>
-        <button><%= link_to "comment", post_path(post) %></button>
+
+        <button class="btn btn-primary " data-toggle="modal" data-target="#myModal"> Comment </button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <div class="modal-title" id="myModalLabel">Comments
+
+                  </div>
+
+
+                  <div class="modal-body">
+                      <% post.comments.each do|comment| %>
+                      <%if comment.user%>
+                        <%= comment.user.email %> said <%= comment.body %> 
+                        <p> 
+                        <%end%>
+                        <%= time_ago_in_words comment.created_at %> ago 
+                        </p> 
+                      <%end%>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                <%= form_for([post, post.comments.build], :html => {:class => "form-horizontal"}) do |f| %>
+                      
+                        <p>
+                        <div class="form-group">
+                          <%= f.label :body, "Comment" %><br />
+                          <%= f.text_area :body, :class => "form-control" %>
+                        </p>
+                        </div>
+                        <p>
+                          <%= f.submit %>
+                        </p>
+                      <% end %>
+                </div>
+    
+              </div>
+            </div>
+          </div>
+
+
+
+        
         <button><%= link_to "buy print", post_path(post) %></button>
         
                   <div class="row rating-desc">
