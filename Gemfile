@@ -54,6 +54,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'sqlite3', '1.3.8'
   
 
 end
