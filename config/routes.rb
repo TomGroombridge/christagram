@@ -7,6 +7,7 @@
 
   resources :posts do
     resources :comments
+    resources :likes
   resources :charges
 
 end

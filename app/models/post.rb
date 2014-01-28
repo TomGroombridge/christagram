@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   after_create :send_new_post_email
   has_many :comments
+  has_many :likes
   has_attached_file :image, 
   :styles => { thumb: "300x300^", small: "150x150>" },
 
@@ -43,6 +44,10 @@ class Post < ActiveRecord::Base
 
   def send_new_post_email
     PostMailer.new_post(self, user).deliver! if user
+  end
+
+  def points
+    likes.where(up: true).count
   end
 
 end

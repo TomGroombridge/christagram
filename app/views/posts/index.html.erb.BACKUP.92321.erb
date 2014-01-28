@@ -1,3 +1,50 @@
+<<<<<<< HEAD
+=======
+<% if false %>
+
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-3">
+      <div class="thumbnail" style= "min-height: 460px">
+        <div class="thumbnail" id="image" style= "height: 225px">
+        <%= image_tag post.image.url(:thumb), class: "christagram-upload" %>
+
+        </div>
+        <div class="caption" style= "height: 225px">
+        <p> <%= link_to post.title, post_path(post) %> </p>
+
+        <p> <%= post.content %> </p>
+                  <p>
+        <% post.tags.each do |tag| %>
+        <%= link_to tag, tag_posts_path(tag) %>
+        <% end %></p>
+        <p> Created <%= time_ago_in_words post.created_at %> ago </p>
+        </div>
+        <div class="caption" id="buttons">
+        <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
+        <button><%= link_to "edit", edit_post_path(post) %></button>
+        <button><%= link_to "comment", post_path(post) %></button>
+        <button><%= link_to "buy print", post_path(post) %></button>
+        
+        </div>
+      <!--    <h3> Buy a print </h3> -->
+        </div>   
+      </div>
+   <%end%>
+  </div>
+</div>
+
+ <% end %>
+
+
+
+
+
+
+<% if true %>
+>>>>>>> 329872790009d15002aeb93d3920f4b2bb76dbbc
+
   <div class="container">
 
     <% @posts.in_groups_of(2, false) do |post_row| %>
@@ -41,5 +88,7 @@
           </div>
         <% end %>
       </div>
-  <% end %>
-    </div>
+
+    <% end %>
+
+  </div>
