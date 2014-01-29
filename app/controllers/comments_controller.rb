@@ -10,7 +10,7 @@ end
     if @comment.save
       redirect_to post_path(@post)
     else 
-      "gello"
+      "hello"
     end
   end
 
