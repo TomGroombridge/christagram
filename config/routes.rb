@@ -2,8 +2,8 @@
 
   get "welcome/index"
 
-  devise_for :users
-  root :to => "welcome#index"
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  root "posts#index"
 
   resources :posts do
     resources :comments
@@ -12,9 +12,9 @@
 
 end
 
-  resources :tags do
-    resources :posts
-  end
+resources :tags do
+  resources :posts
+end
 
 
 
