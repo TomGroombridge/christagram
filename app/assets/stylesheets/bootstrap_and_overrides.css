@@ -17,6 +17,15 @@
     background-color: white;
   }
 
+  .btn-facebook a {
+    color: #FFFFFF;
+  }
+
+  .btn-facebook a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
 /*  body {
     font-family: 'The Girl Next Door', cursive;
     background-color: #e0ebe7;

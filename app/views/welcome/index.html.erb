@@ -2,8 +2,9 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login"> <!-- id="login"> -->
-      <h3>Welcome to Christagram! <small>It's free and always will be.</small></h3>
-      <h3>Please Sign Up or <%= link_to 'Login', new_user_session_path %> </h3>
+      <h4>Welcome to Christagram! <small>It's free and always will be.</small></h4>
+      <h4>Please Sign Up or <%= link_to 'Login', new_user_session_path %> or simply </h4>
+      <button class="btn btn-facebook" style="color:white"><i class="fa fa-facebook"></i> <%= link_to "| Connect with Facebook",user_omniauth_authorize_path(:facebook) %> </button>
       <hr class="colorgraph">
 
       <%= form_for(User.new, :as => :user, :url => registration_path(:user)) do |f| %>
@@ -15,7 +16,7 @@
             <%= f.password_field :password, class: 'form-control input-lg', placeholder: 'password' %>
           </div>
           <div class="form-group">
-            <%= f.password_field :password_confirmation, class: 'form-control input-lg', placeholder: 'password_confirmation' %>
+            <%= f.password_field :password_confirmation, class: 'form-control input-lg', placeholder: 'confirm password' %>
           </div>
       <div class="row">
         <div class="col-xs-3 col-sm-3 col-md-3">
@@ -38,7 +39,7 @@
         <%= link_to 'Login', new_user_session_path, :class => 'btn btn-warning btn-block btn-lg' %>
         </div>
         <div class="col-xs-6 col-md-5">
-          <%= link_to 'Just looking for now', posts_path, :class => 'btn btn-warning btn-block btn-lg' %>
+          <%= link_to 'Just looking for now', "/", :class => 'btn btn-warning btn-block btn-lg' %>
         </div>
       </div>
 
@@ -55,7 +56,9 @@
         <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
       </div>
       <div class="modal-body">
-        <p>We don't really have any at the moment! No cock pictures</p>
+        <p>We don't really have any at the moment! Just remember that it's a Professional technical test so please only upload 'nice' pictures!!</p>
+        <p>You can sign in with your facebook or use your e-mail address facebook is probably best as it allows more features</p>
+        <p>Thanks!</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
