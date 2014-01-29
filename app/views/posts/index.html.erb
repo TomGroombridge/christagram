@@ -26,7 +26,7 @@
         <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
         <button><%= link_to "edit", edit_post_path(post) %></button>
         <% end %>
-        <button class="btn btn-primary " data-toggle="modal" data-target="#myModal"> Comment </button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Comment </button>
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -76,13 +76,10 @@
         
                   <div class="row rating-desc">
                     <div class="col-md-12">
-                      <span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
-                      </span><span class="glyphicon glyphicon-heart"></span><span class="glyphicon glyphicon-heart">
-                      </span><span class="glyphicon glyphicon-heart"></span>(36)<span class="separator">|</span>
-                      <span class="glyphicon glyphicon-comment"></span>(100 Comments)
+
                       <h3 class='likes_count' data-id='<%= post.id %>'><%= post.points %></h3>
 
-                      <%= button_to 'Like', post_likes_path(post, up: true), remote: true %>
+                      <%= button_to 'Like', post_likes_path(post, up: true), remote: true, class: "btn btn-primary"%>
                     </div>
                   </div>
                 </div>
