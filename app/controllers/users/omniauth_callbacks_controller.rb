@@ -5,7 +5,7 @@ def facebook
 
     if @user.persisted?
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-      sign_in_and_redirect '/posts' #this will throw if @user is not activated
+      sign_in_and_redirect @user #this will throw if @user is not activated
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
