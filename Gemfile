@@ -14,6 +14,8 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
+gem 'omniauth-facebook'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -45,16 +47,21 @@ gem 'sdoc',          group: :doc, require: false
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/jonleighton/spring
 gem 'spring',        group: :development
 
+gem 'websocket-rails'
+
+gem 'thin'
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'sqlite3', '1.3.8'
   
 
 end
 
 gem 'rails_12factor', group: :production
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

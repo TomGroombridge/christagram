@@ -1,0 +1,62 @@
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login"> <!-- id="login"> -->
+      <h4>Welcome to Christagram! <small>It's free and always will be.</small></h4>
+      <h4>Please Sign Up or <%= link_to 'Login', new_user_session_path %> or simply </h4>
+      <button class="btn btn-facebook" style="color:white"><i class="fa fa-facebook"></i> <%= link_to "| Connect with Facebook",user_omniauth_authorize_path(:facebook) %> </button>
+      <hr class="colorgraph">
+
+      <%= form_for(User.new, :as => :user, :url => registration_path(:user)) do |f| %>
+
+      <div class="form-group">
+        <%= f.email_field :email, :autofocus => true, class: 'form-control input-lg', placeholder: 'e-mail' %>
+      </div>
+          <div class="form-group">
+            <%= f.password_field :password, class: 'form-control input-lg', placeholder: 'password' %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, class: 'form-control input-lg', placeholder: 'confirm password' %>
+          </div>
+      <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+           By clicking <strong class="label label-success">Sign up</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site
+        </div>
+      </div>
+      
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-4 col-md-4">
+        <%= f.submit 'Sign up', :class => 'btn btn-success btn-block btn-lg' %>
+        </div>
+        <div class="col-xs-4 col-md-4">
+        <%= link_to 'Login', new_user_session_path, :class => 'btn btn-warning btn-block btn-lg' %>
+        </div>
+      </div>
+
+      <% end %>
+
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
+      </div>
+      <div class="modal-body">
+        <p>We don't really have any at the moment! Just remember that it's a Professional technical test so please only upload 'nice' pictures!!</p>
+        <p>You can sign in with your facebook or use your e-mail address facebook is probably best as it allows more features</p>
+        <p>Thanks!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+
+

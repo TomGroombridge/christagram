@@ -1,0 +1,41 @@
+<% # jquery upload template # %>
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login"> <!-- id="login"> -->
+    
+      <h2>Sign in</h2>
+      <h3><small></small></h3>
+      <hr class="colorgraph">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <div class="form-group">  
+          <%= f.email_field :email, :autofocus => true, class: 'form-control input-lg', placeholder: 'Email Address' %> 
+      </div>
+      <div class="form-group">
+          <%= f.password_field :password, class: 'form-control input-lg', placeholder: 'Password' %>
+      </div>
+
+      <hr class="colorgraph">
+
+      <div class="row">
+        <div class="col-md-4">
+        <%= f.submit "Sign in", :class => 'btn btn-success btn-block btn-lg', :id => 'addpost' %>
+      <% end %>
+        </div>
+        <div class="col-md-2">
+        <%= link_to 'cancel', welcome_index_path, :class => 'btn btn-danger btn-block btn-lg', :id => 'addpost' %>
+        </div>
+        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+        <%= render "devise/shared/links" %>
+      </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+

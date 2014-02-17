@@ -1,4 +1,10 @@
 class Post < ActiveRecord::Base
+  validates :title, presence: true
+  validates :content, presence: true
+  validates :image, presence: true
+  after_create :send_new_post_email
+  has_many :comments
+  has_many :likes
   has_attached_file :image, 
   :styles => { thumb: "300x300^", small: "150x150>" },
 
@@ -32,16 +38,19 @@ class Post < ActiveRecord::Base
   end
 
   def tag_names=(tag_names)
-    self.tags = tag_names.downcase.split(', ').map do |tag_name|
-      tag_name.downcase.gsub(/[^a-z]/, '')
-      Tag.find_or_create_by(name: tag_name)
-    end
+    self.tags = Tag.find_or_create_from_tag_names(tag_names)
   end
 
   def self.for_tag_or_all(tag_name)
     tag_name ? Tag.find_by(name: tag_name).posts : all
-    
+  end
 
+  def send_new_post_email
+    PostMailer.new_post(self, user).deliver! if user
+  end
+
+  def points
+    likes.where(up: true).count
   end
 
 end

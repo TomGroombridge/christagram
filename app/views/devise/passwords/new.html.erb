@@ -1,0 +1,31 @@
+<% # jquery upload template # %>
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login"> <!-- id="login"> -->
+    
+      <h2>Forgot your password?</h2>
+      <h3><small></small></h3>
+      <hr class="colorgraph">
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+      <div class="form-group">  
+          <%= f.email_field :email, :autofocus => true, class: 'form-control input-lg', placeholder: 'e-mail' %> 
+      </div>
+      <hr class="colorgraph">
+
+      <div class="row">
+        <div class="col-md-7">
+        <%= f.submit "Send me reset password instructions", :class => 'btn btn-success btn-block btn-lg', :id => 'addpost' %>
+      <% end %>
+        </div>
+        <div class="col-md-2">
+        <%= link_to 'cancel', welcome_index_path, :class => 'btn btn-danger btn-block btn-lg', :id => 'addpost' %>
+        </div>
+        <%= render "devise/shared/links" %>
+      </div>
+  </div>
+</div>
+</div>
+

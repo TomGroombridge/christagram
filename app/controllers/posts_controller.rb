@@ -1,21 +1,25 @@
 class PostsController < ApplicationController
-
+  
   def new
     @post = Post.new
   end
 
-  def create
-    @post = Post.new(params[:post].permit(:title, :content, :image, :tag_names))
+  def create 
+    @post = Post.create(params[:post].permit(:title, :content, :image, :tag_names))
+    @post.user = current_user
     if @post.save
       redirect_to '/posts'
     else
-      render 'new'
+      flash[:alert] = @post.errors.map {|k,v| "#{k.capitalize} #{v}"}
+      render new_post_path
     end
   end
 
+
   def index
+    redirect_to welcome_index_path if !current_user
     @posts = Post.for_tag_or_all(params[:tag_id]).order('created_at DESC')
-   end
+  end
 
   def destroy
     @post = Post.find(params[:id])
@@ -36,6 +40,12 @@ class PostsController < ApplicationController
     @post.update params[:post].permit(:title, :content, :image)
 
     redirect_to '/posts'
+  end
+
+  private
+
+  def fetch_post
+    @post = Post.find(params[:id])
   end
 
 

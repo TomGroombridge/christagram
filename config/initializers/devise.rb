@@ -34,7 +34,7 @@ Devise.setup do |config|
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
-  # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
+  # if you set :request_keys to [:subdomain], :subdomain will be used on authetication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
 
@@ -251,4 +251,20 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  require "omniauth-facebook"
+  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,
+  {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

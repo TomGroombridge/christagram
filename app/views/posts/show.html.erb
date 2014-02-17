@@ -1,0 +1,50 @@
+<script id="template-upload" type="text/x-tmpl"><div class="upload">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" id="login">
+    <div class="thumbnail" id="buyimage" style="height: 500px;">
+        <%= image_tag @post.image.url(:thumb), class: "christagram-upload" %>
+    </div>
+
+  <h3>Buy a print of "<%= @post.title %>" </h3>
+
+  <%= form_tag post_charges_path(@post) do %>
+
+  	<p>Buy this print for £10.00</p>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.application.secrets.stripe_pk %>"
+            data-description="Print of <%= @post.title %> "
+            data-amount="1000"
+            data-currency="GBP"></script>
+  <% end %>
+</div>
+</div>
+
+  <!-- <h3>Comments</h3>
+           <% @post.comments.each do|comment| %>
+              <%= comment.commenter %> said <%= comment.body %> <br>
+             <p> <%= time_ago_in_words comment.created_at %> ago </p> <br>
+            <%end%>
+
+  <h2>Add a comment:</h2>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <p>
+      <%= f.label :commenter %><br />
+      <%= f.text_field :commenter %>
+    </p>
+    <p>
+      <%= f.label :body %><br />
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+   
+  <%= link_to 'Back', posts_path %>
+  | <%= link_to 'Edit', edit_post_path(@post) %> -->
+
+</div>

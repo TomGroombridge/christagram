@@ -1,15 +1,21 @@
  Rails.application.routes.draw do
 
-  devise_for :users
-  root :to => "posts#index"
+  get "welcome/index"
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  root "posts#index"
 
   resources :posts do
+    resources :comments
+    resources :likes
+  resources :charges
 
 end
 
-  resources :tags do
-    resources :posts
-  end
+resources :tags do
+  resources :posts
+end
+
 
 
 
