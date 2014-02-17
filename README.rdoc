@@ -1,28 +1,21 @@
-== README
+== Christagram
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-- Task set by Alex Peattie at Makers Academy
 
-Things you may want to cover:
+## 27th January 2014
 
-* Ruby version
+Making a clone of instagram using Ruby on Rails
 
-* System dependencies
+What I used:
 
-* Configuration
+* Ruby 2.0.0
 
-* Database creation
+* Rails 4.1.0
 
-* Database initialization
+* Devise
 
-* How to run the test suite
+* Omniauth Facebook
 
-* Services (job queues, cache servers, search engines, etc.)
+* Twitter Bootstrap 3
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Image Majik

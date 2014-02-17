@@ -1,92 +1,234 @@
-  <div class="container">
+<% if false %>
 
-    <% @posts.in_groups_of(2, false) do |post_row| %>
-      <div class="row">
-        <% post_row.each do |post| %>
-          <div class="col-md-6">
-            <div class="well well-sm">
-              <div class="row">
-                <div class="col-xs-6 col-md-6 text-center" style= "height: 225px">
+
+
+<div class="container">
+
+  <% @posts.in_groups_of(2, false) do |post_row| %>
+    <div class="row">
+      <% post_row.each do |post| %>
+        <div class="col-md-6">
+          <div class="well well-sm">
+            <div class="row">
+              <div class="col-xs-6 col-md-6 text-center" style= "height: 225px">
                   <%= link_to image_tag(post.image.url(:thumb), class: "christagram-upload img-rounded img-responsive"), post_path(post) %>
-                </div>
-                <div class="col-xs-6 col-md-6 section-box">
-                  <h2><%= link_to post.title, post_path(post) %></h2>
-                  <p class='desc'> <%= post.content %> </p>    
-                  <p>
-                    <% post.tags.each do |tag| %>
-                    <%= link_to tag, tag_posts_path(tag) %>
-                    <% end %>&nbsp;
-                  </p>
-                  </p>
-        <p> Created <%= time_ago_in_words post.created_at %> ago </p>
-                  <hr />
+              </div>
+              <div class="col-xs-6 col-md-6 section-box">
+                <h2><%= link_to post.title, post_path(post) %></h2>
+                <p class='desc'> <%= post.content %> </p>    
+                <p>
+                  <% post.tags.each do |tag| %>
+                  <%= link_to tag, tag_posts_path(tag) %>
+                  <% end %>&nbsp;
+                </p>
+                <p> Created <%= time_ago_in_words post.created_at %> ago
+                </p>
+                <hr />
 
                 <!-- this is a all the code for the comment button on the posts page -->
-        <% if post.user == current_user %>
-        <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %></button>
-        <button><%= link_to "edit", edit_post_path(post) %></button>
-        <% end %>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Comment </button>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <div class="modal-title" id="myModalLabel">Comments
-
-                  </div>
-
-
-                  <div class="modal-body">
-                      <% post.comments.each do|comment| %>
-                      <%if comment.user%>
-                        <strong><%= comment.user.email%></strong> said <br> <%= comment.body %> 
-                        <p> 
-                        <%end%>
-                        <%= time_ago_in_words comment.created_at %> ago 
-                        </p> 
-                      <%end%>
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                <%= form_for([post, post.comments.build], :html => {:class => "form-horizontal"}) do |f| %>
-                      
-                        <p>
-                        <div class="form-group">
-                          <%= f.label :body, "Comment" %><br />
-                          <%= f.text_area :body, :class => "form-control" %>
-                        </p>
+                <% if post.user == current_user %>
+                  <button><%= link_to "del", post_path(post), :method => :delete, data: { confirm: 'Are you sure?' } %>
+                  </button>
+                  <button><%= link_to "edit", edit_post_path(post) %>
+                  </button>
+                <% end %>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Comment 
+                </button>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                        </button>
+                        <div class="modal-title" id="myModalLabel">Comments
                         </div>
+                        <div class="modal-body">
+                          <% post.comments.each do|comment| %>
+                            <%if comment.user%>
+                              <strong><%= comment.user.email%>
+                              </strong> said <br> <%= comment.body %> 
+                            <%end%>
+                            <p> 
+                              <%= time_ago_in_words comment.created_at %> ago 
+                            </p> 
+                              <%end%>
+                        </div>
+
+
+                      </div>
+                      <div class="modal-footer">
+                        <%= form_for([post, post.comments.build], :html => {:class => "form-horizontal"}) do |f| %>
+                          <p>
+                            <div class="form-group">
+                              <%= f.label :body, "Comment" %><br />
+                              <%= f.text_area :body, :class => "form-control" %>
+                            </div>
+                          </p>
                         <p>
                           <%= f.submit %>
                         </p>
-                      <% end %>
-                </div>
+                        <% end %>
+                      </div>
     
-              </div>
-            </div>
-          </div>
-
-
-
-        
-      
-        
-                  <div class="row rating-desc">
-                    <div class="col-md-12">
-
-                      <h3 class='likes_count' data-id='<%= post.id %>'><%= post.points %></h3>
-
-                      <%= button_to 'Like', post_likes_path(post, up: true), remote: true, class: "btn btn-primary"%>
                     </div>
                   </div>
+                </div>
+
+                    </div>
+                <div class="row rating-desc">
+                  <div class="col-md-12">
+                    <h3 class='likes_count' data-id='<%= post.id %>'><%= post.points %>
+                    </h3>
+                    <%= button_to 'Like', post_likes_path(post, up: true), remote: true, class: "btn btn-primary"%>
                 </div>
               </div>
             </div>
           </div>
         <% end %>
       </div>
+    <% end %>
+
+
+
+<% end %>
+
+
+
+<!-- *********************************************************************************************************** -->
+
+
+<% if true %>
+
+
+<div class="container">
+  <div class="row form-group">
+    <% @posts.in_groups_of(2, false) do |post_row| %>
+      <% post_row.each do |post| %>
+              <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">You can even have a Panel Title</h3>
+                  </div>
+                    <div class="panel-image">
+                        <%= link_to image_tag(post.image.url(:thumb), class: "christagram-upload img-rounded img-responsive"), post_path(post) %>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Title of Image</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                        <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                        <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                        <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                    </div>
+                </div>
+              </div>
+                <!-- <div class="col-xs-12 col-md-6">
+                  <div class="panel panel-default">
+                      <div class="panel-image hide-panel-body">
+                          <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52cf9489095e8_1.JPG" class="panel-image-preview" />
+                      </div>
+                      <div class="panel-body">
+                          <h4>Title of Image</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
+                      </div>
+                      <div class="panel-footer text-center">
+                          <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                          <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                          <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                          <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                      </div>
+                  </div>
+              </div>
+        </div>
+          
+          <div class="row form-group">
+              <div class="col-xs-12 col-md-6">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h3 class="panel-title">You can even have a Panel Title</h3>
+                      </div>
+                      <div class="panel-image hide-panel-body">
+                          <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52c470899a2e1_1.JPG" class="panel-image-preview" />
+                      </div>
+                      <div class="panel-body">
+                          <h4>Title of Image</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
+                      </div>
+                      <div class="panel-footer text-center">
+                          <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                          <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                          <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                          <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                  <div class="panel panel-default">
+                      <div class="panel-image">
+                          <img src="http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_52cd36aac6bed_1.JPG" class="panel-image-preview" />
+                      </div>
+                      <div class="panel-body">
+                          <h4>Show the Description by default!</h4>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
+                      </div>
+                      <div class="panel-footer text-center">
+                          <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                          <a href="#facebook"><span class="fa fa-facebook"></span></a>
+                          <a href="#twitter"><span class="fa fa-twitter"></span></a>
+                          <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                      </div>
+                </div>
+            </div>
+
+
+
+
+
+          </div> -->
+      <% end %>
+    <% end %> 
+  </div>
+
+
+<script>
+  $(function() {
+      $('.panel-image img.panel-image-preview').on('click', function(e) {
+        $(this).closest('.panel-image').toggleClass('hide-panel-body');
+      });
+  });
+</script>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <% end %>
-    </div>
