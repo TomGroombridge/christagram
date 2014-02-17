@@ -1,8 +1,8 @@
-== <h1>Christagram</h1>
+==Christagram
  
-<h3> Task set by Alex Peattie at Makers Academy </h3>
+#Task set by Alex Peattie at Makers Academy
 
-<h5> 27th January 2014 </h5>
+##27th January 2014
 
 Making a clone of instagram using Ruby on Rails
 
