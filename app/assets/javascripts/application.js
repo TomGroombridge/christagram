@@ -17,6 +17,11 @@
 //= require jquery.ui.all  
 //= require inputosaurus
 //= require twitter/bootstrap
+<<<<<<< HEAD
+//= require turbolinks
+//= require_tree .
+=======
 //= require websocket_rails/main
 //= require_tree .
 
+>>>>>>> 95c386955cbf10c7d49ca37174a7836b70afab67
