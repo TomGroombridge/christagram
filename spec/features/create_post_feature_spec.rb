@@ -10,6 +10,7 @@ describe 'creating a post' do
       fill_in 'title', with: 'new post'
       fill_in 'content', with: 'my testing post'
       fill_in 'tags', with: 'hello, world'
+      attach_file 'post_image', Rails.root.join('spec/images/plane.jpg')
       click_button 'Post'
 
       expect(current_path).to eq '/posts'

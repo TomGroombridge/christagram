@@ -14,7 +14,7 @@ describe "deleting the post" do
   it 'should delete the post from the database' do
     visit '/posts'
     click_link 'del'
-    expect(page).not_to have_content 'hello world'
+    expect(page).not_to have_content 
   end
 
 
