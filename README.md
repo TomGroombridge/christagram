@@ -1,6 +1,6 @@
 ## Christagram
  
-### Task set by <a href="https://github.com/alexpeattie?source=c">@alexpeattie</a>, at Makers Academy
+### Task set by <a href="https://github.com/ecomba?source=c">@ecomba</a>, at Makers Academy
 
 #### 27th January 2014
 
